@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cecil-Lemkin Family Archive</title>
+  <!--[if lte IE 8]><script src="assets/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="assets/main.css" />
+  <link rel="stylesheet" href="assets/font-awesome.min.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="assets/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="assets/ie8.css" /><![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if current_user %>
+  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+<% end %>
+
+<!-- Header -->
+  <header id="header">
+    <div class="inner">
+      <!-- Logo -->
+        <a href="index" class="logo">
+          <span class="symbol"><img src="assets/logo.svg" alt="" /></span><span class="title">Cecil-Lemkin Family Archive</span>
+        </a>
+      <!-- Nav -->
+        <nav>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+          </ul>
+        </nav>
+
+    </div>
+  </header>
+
+<!-- Menu -->
+  <nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+      <li><a href="index">Home</a></li>
+      <% if current_user %>
+      <li><%= link_to "Logout", '/logout' %></li>
+      <% else %>
+      <li><%= link_to 'Login', '/login' %> </li>
+      <li><%= link_to 'Signup', '/signup' %></li>
+      <% end %>
+    </ul>
+  </nav>
+<%= yield %>
+
+<!-- Scripts -->
+<script src="assets/jquery.min.js"></script>
+<script src="assets/skel.min.js"></script>
+<script src="assets/util.js"></script>
+<!--[if lte IE 8]><script src="assets/ie/respond.min.js"></script><![endif]-->
+<script src="assets/main.js"></script>
+
+</body>
+</html>

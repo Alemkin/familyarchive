@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Rails.application.config.secret_key_base = ENV['SECRET_KEY_BASE']
+FamilyArchive::Application.config.secret_key_base = '1e08f4f44c979ce8c9fc24752f9e22ee87c4c984d4b60263a80b78a87b6bb34d063040a0e686e002205c715a3c0cb6171929a6c72e96ac68f85b95b0afb62472'
