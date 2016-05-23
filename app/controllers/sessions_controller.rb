@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
       redirect_to '/login'
+      flash[:notice] = "Username or Password are incorrect."
+      flash[:color] = "invalid"
     end
   end
 
