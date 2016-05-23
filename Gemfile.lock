@@ -146,6 +146,7 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder
   jquery-rails
+  pg
   postgresql
   rails (~> 4.2.6)
   sass-rails
