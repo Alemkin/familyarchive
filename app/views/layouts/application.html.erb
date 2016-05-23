@@ -36,12 +36,12 @@
   <nav id="menu">
     <h2>Menu</h2>
     <ul>
-      <li><a href="index">Home</a></li>
+      <li><a class="fa fa-home" href="index">&nbsp; Home</a></li>
       <% if current_user %>
-      <li><%= link_to "Logout", '/logout' %></li>
+      <li><%= link_to '   Logout', '/logout', class: "fa fa-sign-out" %></li>
       <% else %>
-      <li><%= link_to 'Login', '/login' %> </li>
-      <li><%= link_to 'Signup', '/signup' %></li>
+      <li><%= link_to '   Login', '/login', class: "fa fa-sign-in" %> </li>
+      <li><%= link_to '   Signup', '/signup', class: "fa fa-user-plus" %></li>
       <% end %>
     </ul>
   </nav>
