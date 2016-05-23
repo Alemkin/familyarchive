@@ -5,11 +5,11 @@
 <% if flash[:error] -%>
   <p class="error"><%= flash[:error] %></p>
 <% end -%>
-<%= form_tag '/login' do %>
+<%=simple_form_for :sessions, url: '/login' do |f| %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+  <%= f.input :email, label: 'Email:', error: 'Email required' %>
+  <%= f.input :password, label: 'Password:', error: 'Password required', input_html: { maxlength: 20 } %>
+  <%= f.button :submit, "Login"%>
   <%= link_to 'Return to Home', '/index' %>
 
 <% end %>
