@@ -13,7 +13,7 @@
 <body>
 
 <% if current_user %>
-  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+  Signed in as <%= current_user.name %>
 <% end %>
 
 <!-- Header -->
@@ -40,9 +40,11 @@
       <li><a class="fa fa-home" href="index">&nbsp; Home</a></li>
       <% if current_user %>
       <li><%= link_to '   Logout', '/logout', class: "fa fa-sign-out" %></li>
+        <% if current_user.is_admin %>
+          <li><%= link_to '   Add User', '/signup', class: "fa fa-user-plus" %></li>
+        <% end %>
       <% else %>
       <li><%= link_to '   Login', '/login', class: "fa fa-sign-in" %> </li>
-      <li><%= link_to '   Signup', '/signup', class: "fa fa-user-plus" %></li>
       <% end %>
     </ul>
   </nav>

@@ -7,12 +7,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to '/signup'
+      flash[:notice] = "User created successfully with email: " + @user.email
     else
       redirect_to '/signup'
-      flash[:notice] = "You filled out your information incorrectly."
-      flash[:color] = "invalid"
+      flash[:error] = "You filled out your information incorrectly."
     end
   end
 

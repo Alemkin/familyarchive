@@ -13,8 +13,7 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
       redirect_to '/login'
-      flash[:notice] = "Username or Password are incorrect."
-      flash[:color] = "invalid"
+      flash[:error] = "Username or Password are incorrect."
     end
   end
 

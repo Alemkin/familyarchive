@@ -48,6 +48,12 @@
 		-webkit-text-size-adjust: none;
 	}
 
+	.error {
+		color: red;
+	}
+	.notice {
+		color: green;
+	}
 /* Box Model */
 
 	*, *:before, *:after {
