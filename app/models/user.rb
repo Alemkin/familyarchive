@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 private
 def strip_whitespace
   self.name = self.name.strip unless self.name.nil?
-  self.email = self.email.strip unless self.email.nil?
+  self.email = self.email.strip.downcase unless self.email.nil?
   self.password = self.password.strip unless self.password.nil?
 end
 
