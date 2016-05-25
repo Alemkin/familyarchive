@@ -12,4 +12,5 @@ FamilyArchive::Application.routes.draw do
   get '/generic' => 'pages#generic'
   get '/index' => 'pages#index'
 
+  get '/forbidden' => 'application#forbidden'
 end

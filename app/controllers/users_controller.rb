@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
 
   def new
+    redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
     @user = User.new
   end
 
   def create
+    redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
     @user = User.new(user_params)
     if @user.save
       redirect_to '/signup'
