@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :email
   validates_presence_of :password
-  validates_uniqueness_of :email
+  validates_length_of :password, :minimum => 5, :maximum => 20, :allow_blank => false
+  validates_uniqueness_of :email, :case_sensitive => false
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   before_validation :strip_whitespace, :only => [:name, :email, :password]
