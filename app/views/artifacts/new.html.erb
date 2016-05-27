@@ -1,7 +1,7 @@
 <% if current_user %>
   <% if current_user.is_admin %>
 
-<h1>Add a User able to view the Archive</h1>
+<h1>Add a new Artifact to the Archive</h1>
 
 <!-- Flash notices -->
 <% if flash[:notice] -%>
@@ -25,7 +25,7 @@
   <%= f.input :exact_date, label: 'Exact Date:', as: :date, start_year: Time.now.year - 200, end_year: Time.now.year, order: [:day, :month, :year], html5: true  %>
   <%= f.input :estimated_date, label: 'Estimated Date:' %>
   <%= f.input :content_tag, label: 'Extra Content Tags, Comma Separated:' %>
-  <%= f.button :submit %>
+  <%= f.button :submit ,  :onclick => 'return confirm("Confirm Add New Artifact")' %>
   <%= link_to 'Return to Home', '/index' %>
 <% end %>
 <!-- End New artifact form -->
