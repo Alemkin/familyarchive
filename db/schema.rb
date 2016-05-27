@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408041145) do
+ActiveRecord::Schema.define(version: 20160527012510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artifacts", force: :cascade do |t|
+    t.string   "artifact_name"
+    t.string   "short_description"
+    t.string   "story_text"
+    t.string   "image_url"
+    t.string   "video_url"
+    t.string   "subject_author_name"
+    t.string   "family_name"
+    t.string   "artifact_type"
+    t.datetime "exact_date"
+    t.string   "estimated_date"
+    t.string   "content_tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
