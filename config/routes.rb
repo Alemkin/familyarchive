@@ -12,5 +12,10 @@ FamilyArchive::Application.routes.draw do
   get '/generic' => 'pages#generic'
   get '/index' => 'pages#index'
 
+  get '/newartifact' => 'artifacts#new'
+  post '/createartifact' => 'artifacts#create'
+  get '/editartifact' => 'artifacts#edit'
+  post '/changeartifact' => 'artifacts#change'
+
   get '/forbidden' => 'application#forbidden'
 end

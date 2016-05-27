@@ -1,0 +1,26 @@
+<% if current_user %>
+  <% if current_user.is_admin %>
+
+<h1>Add a User able to view the Archive</h1>
+
+<!-- Flash notices -->
+<% if flash[:notice] -%>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end -%>
+<% if flash[:error] -%>
+  <p class="error"><%= flash[:error] %></p>
+<% end -%>
+<!-- End Flash notices -->
+
+<!-- edit artifact form -->
+<%= simple_form_for @artifact, url: '/changeartifact' do |f| %>
+
+<% end %>
+<!-- edit artifact form -->
+
+  <% else %>
+  <h1>You do not have permission to add users.</h1>
+  <% end %>
+<% else %>
+<h1>You do not have permission to add users.</h1>
+<% end %>
