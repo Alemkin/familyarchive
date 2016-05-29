@@ -8,6 +8,8 @@ class PagesController < ApplicationController
 
   def generic
     @artifact = Artifact.find(params[:id])
+    @story_paragraphs = @artifact.story_text.split("\n")
+    @transcribed_paragraphs = @artifact.transcribed_text.split("\n")
   end
 
 end

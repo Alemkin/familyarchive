@@ -1,7 +1,7 @@
 <% if current_user %>
 <style>
 	.thumbnails {
-		width: 80%;
+		width: 70%;
 		overflow: auto;
 		overflow-y: hidden;
 		white-space: nowrap;
@@ -22,7 +22,7 @@
 
 	.preview img {
 		padding: 1px;
-		width: 80%;
+		height: 80%;
 	}
 </style>
 
@@ -49,10 +49,14 @@
 			<hr style="margin-right: 280px; margin-left: 280px; margin-bottom: 50px;">
 
 			<h2>Story</h2>
-			<p style="font-size:18px;"><%=@artifact.story_text%></p>
+			<% for s_paragraph in @story_paragraphs %>
+				<p style="font-size:18px;"><%=s_paragraph%></p>
+			<% end %>
 			<% if @artifact.transcribed_text -%>
 			<h2>Transcribed Text of Document</h3>
-			<p style="font-size:18px;"><%=@artifact.transcribed_text%></p>
+				<% for t_paragraph in @transcribed_paragraphs %>
+					<p style="font-size:18px;"><%=t_paragraph%></p>
+				<% end %>
 			<% end -%>
 		</div>
 		<hr style="margin-right: 280px; margin-left: 280px; margin-top: 50px;">

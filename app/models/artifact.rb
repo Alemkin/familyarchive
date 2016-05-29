@@ -17,6 +17,9 @@ def strip_whitespace
   self.subject_author_name = self.subject_author_name.strip unless self.subject_author_name.nil?
   self.family_name = self.family_name.strip unless self.family_name.nil?
   self.artifact_type = self.artifact_type.strip unless self.artifact_type.nil?
+  for image in self.image_url
+    image.strip
+  end
 end
 
 end
