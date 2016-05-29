@@ -14,10 +14,10 @@
 
 <!-- New user form -->
 <%= simple_form_for @user, url: '/users' do |f| %>
-  <%= f.input :name, label: 'Name:', error: 'Name required', input_html: { maxlength: 20 }%>
-  <%= f.input :email, label: 'Email:', error: 'Email required' %>
-  <%= f.input :password, label: 'Password:', error: 'Password required', input_html: { maxlength: 20 } %>
-  <%= f.input :password_confirmation, required: true, label: 'Confirm Password:', error: 'Password confirmation required', input_html: { maxlength: 20 } %>
+  <%= f.input :name, label: 'Name:', error: 'Name is invalid', input_html: { maxlength: 20 }%>
+  <%= f.input :email, label: 'Email:', error: 'Email is invalid or already used' %>
+  <%= f.input :password, label: 'Password:', error: 'Password invalid', input_html: { maxlength: 20 } %>
+  <%= f.input :password_confirmation, required: true, label: 'Confirm Password:', error: 'Passwords do not match', input_html: { maxlength: 20 } %>
   <%= f.button :submit %>
   <%= link_to 'Return to Home', '/index' %>
 <% end %>

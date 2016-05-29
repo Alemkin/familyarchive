@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  #get 
+  #get
   def new
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
     @user = User.new
@@ -14,8 +14,8 @@ class UsersController < ApplicationController
       redirect_to '/signup'
       flash[:notice] = "User created successfully with email: " + @user.email
     else
-      redirect_to '/signup'
       flash[:error] = "You filled out your information incorrectly."
+      render :action => '/new'      
     end
   end
 

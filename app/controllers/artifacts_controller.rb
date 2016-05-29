@@ -16,8 +16,8 @@ class ArtifactsController < ApplicationController
       redirect_to '/newartifact'
       flash[:notice] = "Artifact created successfully with name: " + @artifact.artifact_name
     else
-      redirect_to '/newartifact'
       flash[:error] = "Something went wrong filling out your artifact data."
+      render :action => '/new'      
     end
   end
 
