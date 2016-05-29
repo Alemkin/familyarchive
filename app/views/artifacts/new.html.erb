@@ -16,8 +16,8 @@
 <%= simple_form_for @artifact, url: '/createartifact' do |f| %>
   <%= f.input :artifact_name, label: 'Artifact Name:', error: 'Artifact Name required'%>
   <%= f.input :short_description, label: 'Short Description:', error: 'Short description required' %>
-  <%= f.input :story_text, as: :textarea,label: 'Story:', error: 'Story required' %>
-  <%= f.input :transcribed_text,as: :textarea, label: 'Transcribed text of document:'%>
+  <%= f.input :story_text, as: :text, label: 'Story:', error: 'Story required' %>
+  <%= f.input :transcribed_text, as: :text, label: 'Transcribed text of document:'%>
   <%= f.input :image_url, label: 'Url to direct Image:', error: 'Image Url confirmation required' %>
   <%= f.input :video_url, label: 'Url to direct Video:' %>
   <%= f.input :subject_author_name, label: 'Subject/Author Name:', error: 'Subject/Author required' %>
