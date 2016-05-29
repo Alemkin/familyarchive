@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   end
 
   def generic
+    @artifact = Artifact.find(params[:id])
   end
 
 end

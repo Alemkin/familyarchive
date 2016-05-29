@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527012510) do
+ActiveRecord::Schema.define(version: 20160529000245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160527012510) do
     t.string   "content_tag"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "transcribed_text"
   end
 
   create_table "users", force: :cascade do |t|
