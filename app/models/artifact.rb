@@ -14,7 +14,6 @@ def strip_whitespace
   self.artifact_name = self.artifact_name.strip unless self.artifact_name.nil?
   self.short_description = self.short_description.strip unless self.short_description.nil?
   self.story_text = self.story_text.strip unless self.story_text.nil?
-  self.image_url = self.image_url.strip unless self.image_url.nil?
   self.subject_author_name = self.subject_author_name.strip unless self.subject_author_name.nil?
   self.family_name = self.family_name.strip unless self.family_name.nil?
   self.artifact_type = self.artifact_type.strip unless self.artifact_type.nil?

@@ -6,15 +6,16 @@
 	<div id="main">
 		<div class="inner">
 			<h1><%=@artifact.artifact_name%></h1>
-			<h4><%=@artifact.subject_author_name%></h4>
-			<span class="image main"><img src="<%=@artifact.image_url%>" alt="Image of <%=@artifact.artifact_name%>" /></span>
+			<h3><%=@artifact.subject_author_name%></h3>
+			<span class="image main"><img src="<%=@artifact.image_url[0]%>" alt="Image of <%=@artifact.artifact_name%>" /></span>
+			<h2>Story</h2>
+			<p style="font-size:18px;"><%=@artifact.story_text%></p>
 			<% if @artifact.transcribed_text -%>
-			<h3>Transcribed Text of Document</h3>
-			<p><%=@artifact.transcribed_text%></p>
+			<h2>Transcribed Text of Document</h3>
+			<p style="font-size:18px;"><%=@artifact.transcribed_text%></p>
 			<% end -%>
-			<h3>Story</h3>
-			<p><%=@artifact.story_text%></p>
 		</div>
+		<hr style="margin-right: 300px; margin-left: 300px; margin-top: 50px;">
 	</div>
 
 </div>

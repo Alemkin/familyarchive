@@ -17,7 +17,7 @@
 					<% end -%>
 					<article class="<%= @styles[@count] %>">
 						<span class="image">
-							<img src="<%= artifact.image_url %>" alt="Image of <%= artifact.artifact_name %>" />
+							<img src="<%= artifact.image_url[0] %>" alt="Image of <%= artifact.artifact_name %>" />
 						</span>
 						<a href="/generic?id=<%= artifact.id %>">
 							<h2><%= artifact.artifact_name %></h2>

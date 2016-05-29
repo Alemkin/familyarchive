@@ -38,8 +38,8 @@ class ArtifactsController < ApplicationController
 
 private
   def artifact_params
-    params.require(:artifact).permit(:artifact_name, :short_description, :story_text, :image_url,
+    params.require(:artifact).permit(:artifact_name, :short_description, :story_text,
                                       :video_url, :subject_author_name, :family_name, :artifact_type,
-                                      :exact_date, :estimated_date, :content_tag)
+                                      :exact_date, :estimated_date, :transcribed_text, :content_tag => [], :image_url => [])
   end
 end

@@ -9,6 +9,12 @@
 	<!--[if lte IE 9]><link rel="stylesheet" href="assets/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/ie8.css" /><![endif]-->
   <%= csrf_meta_tags %>
+  <!-- Scripts -->
+  <script src="assets/jquery.min.js"></script>
+  <script src="assets/skel.min.js"></script>
+  <script src="assets/util.js"></script>
+  <!--[if lte IE 8]><script src="assets/ie/respond.min.js"></script><![endif]-->
+
 </head>
 <body>
 
@@ -51,12 +57,6 @@
   </nav>
 <%= yield %>
 
-<!-- Scripts -->
-<script src="assets/jquery.min.js"></script>
-<script src="assets/skel.min.js"></script>
-<script src="assets/util.js"></script>
-<!--[if lte IE 8]><script src="assets/ie/respond.min.js"></script><![endif]-->
 <script src="assets/main.js"></script>
-
 </body>
 </html>

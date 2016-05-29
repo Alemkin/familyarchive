@@ -15,21 +15,72 @@
 <!-- New artifact form -->
 <%= simple_form_for @artifact, url: '/createartifact' do |f| %>
   <%= f.input :artifact_name, label: 'Artifact Name:', error: 'Artifact Name required'%>
+  <br/>
   <%= f.input :short_description, label: 'Short Description:', error: 'Short description required' %>
+  <br/>
   <%= f.input :story_text, as: :text, label: 'Story:', error: 'Story required' %>
+  <br/>
   <%= f.input :transcribed_text, as: :text, label: 'Transcribed text of document:'%>
-  <%= f.input :image_url, label: 'Url to direct Image:', error: 'Image Url confirmation required' %>
+  <br/>
+  <label class="url required" for="artifact_image_url"><abbr title="required">*</abbr> Url to direct Image:</label>
+  <div class="input_fields_wrap1">
+    <a href="javascript:void(0);" id="add_field_button1"><i class="fa fa-plus"></i>Add Another Image</a>
+    <div>
+      <input class="string url required" type="url" name="artifact[image_url][]" id="artifact_image_url"
+      required="required" aria-required="true" >
+    </div>
+  </div>
+  <br/>
   <%= f.input :video_url, label: 'Url to direct Video:' %>
+  <br/>
   <%= f.input :subject_author_name, label: 'Subject/Author Name:', error: 'Subject/Author required' %>
+  <br/>
   <%= f.input :family_name, collection: @family_names, label: 'Family Name:' %>
+  <br/>
   <%= f.input :artifact_type, collection: @artifact_types, label: 'Artifact Type:' %>
+  <br/>
   <%= f.input :exact_date, label: 'Exact Date:', as: :date, start_year: Time.now.year - 200, end_year: Time.now.year, order: [:day, :month, :year], html5: true  %>
+  <br/>
   <%= f.input :estimated_date, label: 'Estimated Date:' %>
-  <%= f.input :content_tag, label: 'Extra Content Tags, Comma Separated:' %>
+  <br/>
+  <label class="string optional" for="artifact_content_tag">Extra Content Tags:</label>
+  <div class="input_fields_wrap2">
+    <a href="javascript:void(0);" id="add_field_button2"><i class="fa fa-plus"></i>Add Another Tag</a>
+    <div>
+      <input class="string optional" type="url" name="artifact[content_tag][]" id="artifact_content_tag">
+    </div>
+  </div>
+  <br/>
   <%= f.button :submit ,  :onclick => 'return confirm("Confirm Add New Artifact")' %>
   <%= link_to 'Return to Home', '/index' %>
 <% end %>
 <!-- End New artifact form -->
+
+<script>
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper1         = $(".input_fields_wrap1"); //Fields wrapper
+    var wrapper2         = $(".input_fields_wrap2"); //Fields wrapper
+
+    $("#add_field_button1").click(function(e) {
+      e.preventDefault();
+      $(wrapper1).append('<div><input class="string url required" type="url" name="artifact[image_url][]" id="artifact_image_url" required="required" aria-required="true" > <a href="#" class="remove_field">Remove</a></div>'); //add input box
+    });
+
+    $("#add_field_button2").click(function(e) {
+      e.preventDefault();
+      $(wrapper2).append('<div><input class="string optional" type="url" name="artifact[content_tag][]" id="artifact_content_tag"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+    });
+    $(wrapper1).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault();
+        $(this).parent('div').remove();
+    })
+    $(wrapper2).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault();
+        $(this).parent('div').remove();
+    })
+});
+</script>
 
   <% else %>
   <h1>You do not have permission to add users.</h1>
