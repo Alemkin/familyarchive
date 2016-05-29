@@ -69,7 +69,7 @@ $(document).ready(function() {
 
     $("#add_field_button2").click(function(e) {
       e.preventDefault();
-      $(wrapper2).append('<div><input class="string optional" type="url" name="artifact[content_tag][]" id="artifact_content_tag"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+      $(wrapper2).append('<div><input class="string optional" type="text" name="artifact[content_tag][]" id="artifact_content_tag"><a href="#" class="remove_field">Remove</a></div>'); //add input box
     });
     $(wrapper1).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault();
