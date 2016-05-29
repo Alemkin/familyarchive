@@ -1,4 +1,31 @@
 <% if current_user %>
+<style>
+	.thumbnails {
+		width: 80%;
+		overflow: auto;
+		overflow-y: hidden;
+		white-space: nowrap;
+	}
+	.thumbnails img {
+		height: 80px;
+		padding: 1px;
+		margin: 0 10px 10px 0;
+	}
+
+	.gallery {
+		position: relative;
+	}
+	.thumbnails img:hover {
+		cursor:pointer;
+		border: 2.5px solid #f2849e;;
+	}
+
+	.preview img {
+		padding: 1px;
+		width: 80%;
+	}
+</style>
+
 <!-- Wrapper -->
 <div id="wrapper">
 
@@ -7,7 +34,20 @@
 		<div class="inner">
 			<h1><%=@artifact.artifact_name%></h1>
 			<h3><%=@artifact.subject_author_name%></h3>
-			<span class="image main"><img src="<%=@artifact.image_url[0]%>" alt="Image of <%=@artifact.artifact_name%>" /></span>
+
+			<div class="gallery" align="center">
+				<div class="image preview" align="center" style="height: 500px;">
+					<img id="preview" src="<%=@artifact.image_url[0]%>" alt="Image of <%=@artifact.artifact_name%>" />
+				</div>
+				<hr style="margin-right: 280px; margin-left: 280px;">
+				<div class="thumbnails" >
+					<% for image in @artifact.image_url %>
+					<img onclick="getElementById('preview').src='<%=image%>'" src="<%=image%>" alt="<%=image%>" />
+					<% end %>
+				</div>
+			</div>
+			<hr style="margin-right: 280px; margin-left: 280px; margin-bottom: 50px;">
+
 			<h2>Story</h2>
 			<p style="font-size:18px;"><%=@artifact.story_text%></p>
 			<% if @artifact.transcribed_text -%>
@@ -15,7 +55,7 @@
 			<p style="font-size:18px;"><%=@artifact.transcribed_text%></p>
 			<% end -%>
 		</div>
-		<hr style="margin-right: 300px; margin-left: 300px; margin-top: 50px;">
+		<hr style="margin-right: 280px; margin-left: 280px; margin-top: 50px;">
 	</div>
 
 </div>
