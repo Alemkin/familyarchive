@@ -8,6 +8,10 @@ FamilyArchive::Application.routes.draw do
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+  get '/allusers' => 'users#all'
+  delete '/deleteuser' => 'users#destroy'
+  get '/edituser' => 'users#edit'
+  patch '/updateuser' => 'users#update'
 
   get '/generic' => 'pages#generic'
   get '/index' => 'pages#index'

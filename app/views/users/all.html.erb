@@ -1,0 +1,48 @@
+<% if current_user %>
+  <% if current_user.is_admin %>
+
+<h1>All Users currently in the system</h1>
+
+<!-- Flash notices -->
+<% if flash[:notice] -%>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end -%>
+<% if flash[:error] -%>
+  <p class="error"><%= flash[:error] %></p>
+<% end -%>
+<!-- End Flash notices -->
+
+<div class="table-wrapper">
+  <table>
+  	<thead>
+  		<tr>
+  			<th>Id (Click to edit)</th>
+  			<th>Name</th>
+  			<th>Email</th>
+        <th></th>
+  		</tr>
+  	</thead>
+  	<tbody>
+      <% for u in @users %>
+  		<tr>
+  			<td><a href="/edituser?id=<%= u.id %>"><%= u.id %></a></td>
+  			<td><%= u.name %></td>
+  			<td><%= u.email %></td>
+        <td>
+          <%= button_to 'Delete', deleteuser_path(:id => u.id), method: :delete,
+                                  :onclick => 'return confirm("Confirm Delete User")' %>
+        </td>
+  		</tr>
+      <% end %>
+  	</tbody>
+  </table>
+</div>
+
+
+
+  <% else %>
+  <h1>You do not have permission to add users.</h1>
+  <% end %>
+<% else %>
+<h1>You do not have permission to add users.</h1>
+<% end %>

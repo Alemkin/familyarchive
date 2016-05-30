@@ -1,0 +1,31 @@
+<% if current_user %>
+  <% if current_user.is_admin %>
+
+<h1>Add a User able to view the Archive</h1>
+
+<!-- Flash notices -->
+<% if flash[:notice] -%>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end -%>
+<% if flash[:error] -%>
+  <p class="error"><%= flash[:error] %></p>
+<% end -%>
+<!-- End Flash notices -->
+
+<!-- New user form -->
+<%= simple_form_for @user, url: '/updateuser?id='+@user.id.to_s do |f| %>
+  <%= f.input :name, label: 'Name:', error: 'Name is invalid', input_html: { maxlength: 20 }%>
+  <%= f.input :email, label: 'Email:', error: 'Email is invalid or already used' %>
+  <%= f.input :password, label: 'Password:', error: 'Password invalid', input_html: { maxlength: 20 } %>
+  <%= f.input :password_confirmation, label: 'Confirm Password:', error: 'Passwords do not match', input_html: { maxlength: 20 } %>
+  <%= f.button :submit %>
+  <%= link_to 'Return to User Table', '/allusers' %>
+<% end %>
+<!-- End New user form -->
+
+  <% else %>
+  <h1>You do not have permission to add users.</h1>
+  <% end %>
+<% else %>
+<h1>You do not have permission to add users.</h1>
+<% end %>

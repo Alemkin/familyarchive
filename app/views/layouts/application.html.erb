@@ -49,6 +49,7 @@
         <% if current_user.is_admin %>
           <li><%= link_to '   Add User', '/signup', class: "fa fa-user-plus" %></li>
           <li><%= link_to '   Add Artifact', '/newartifact', class: "fa fa-plus" %></li>
+          <li><%= link_to '   View Users', '/allusers', class: "fa fa-users" %></li>
         <% end %>
       <% else %>
       <li><%= link_to '   Login', '/login', class: "fa fa-sign-in" %> </li>
