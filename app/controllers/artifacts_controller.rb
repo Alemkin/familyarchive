@@ -24,11 +24,20 @@ class ArtifactsController < ApplicationController
   #get todo
   def edit
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
+    @artifact = Artifact.find(params[:id])
   end
 
   #post todo
   def update
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
+    @artifact = Artifact.find(params[:id])
+    if @artifact.update_attributes(artifact_params)
+      redirect_to generic_path(:id => @artifact.id)
+      flash[:notice] = "This artifact was edited successfully"
+    else
+      flash[:error] = "Something went wrong filling out your artifact data."
+      render :action => '/editartifact'
+    end
   end
 
   #post

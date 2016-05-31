@@ -19,7 +19,7 @@ FamilyArchive::Application.routes.draw do
   get '/newartifact' => 'artifacts#new'
   post '/createartifact' => 'artifacts#create'
   get '/editartifact' => 'artifacts#edit'
-  post '/changeartifact' => 'artifacts#change'
+  patch '/updateartifact' => 'artifacts#update'
   delete '/deleteartifact' => 'artifacts#destroy'
 
   get '/forbidden' => 'application#forbidden'
