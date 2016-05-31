@@ -28,10 +28,14 @@
   			<td><a href="/edituser?id=<%= u.id %>"><%= u.id %></a></td>
   			<td><%= u.name %></td>
   			<td><%= u.email %></td>
+        <% if @current_user.id != u.id %>
         <td>
           <%= button_to 'Delete', deleteuser_path(:id => u.id), method: :delete,
                                   :onclick => 'return confirm("Confirm Delete User")' %>
         </td>
+        <% else %>
+        <td></td>
+        <% end %>
   		</tr>
       <% end %>
   	</tbody>
