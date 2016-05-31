@@ -17,7 +17,7 @@ class ArtifactsController < ApplicationController
       flash[:notice] = "Artifact created successfully with name: " + @artifact.artifact_name
     else
       flash[:error] = "Something went wrong filling out your artifact data."
-      render :action => '/new'      
+      render :action => '/new'
     end
   end
 
@@ -27,13 +27,16 @@ class ArtifactsController < ApplicationController
   end
 
   #post todo
-  def change
+  def update
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
   end
 
   #post
   def destroy
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
+    Artifact.find(params[:id]).destroy
+    flash[:notice] = "Artifact deleted"
+    redirect_to '/'
   end
 
 private
