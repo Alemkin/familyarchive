@@ -2621,11 +2621,12 @@
 				width: 100%;
 				border-radius: 4px;
 				overflow: hidden;
+				height: 300px;
 			}
 
 				.tiles article > .image img {
 					display: block;
-					width: 100%;
+					height: 100%;
 				}
 
 				.tiles article > .image:before {
