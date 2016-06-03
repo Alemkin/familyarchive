@@ -62,12 +62,12 @@
 			<% end -%>
 			<div class="gallery" align="center">
 				<div class="image preview" align="center" style="height: 500px;">
-					<img id="preview" src="<%=@artifact.image_url[0]%>" alt="Image of <%=@artifact.artifact_name%>" />
+					<a id="previewhref" href="<%=@artifact.image_url[0]%>" target="_blank"><img id="preview" src="<%=@artifact.image_url[0]%>" alt="Image of <%=@artifact.artifact_name%>" /></a>
 				</div>
 				<hr style="margin-right: 280px; margin-left: 280px;">
 				<div class="thumbnails" >
 					<% for image in @artifact.image_url %>
-					<img onclick="getElementById('preview').src='<%=image%>'" src="<%=image%>" alt="Missing image" />
+					<img onclick="getElementById('preview').src='<%=image%>';getElementById('previewhref').href='<%=image%>';" src="<%=image%>" alt="Missing image" />
 					<% end %>
 				</div>
 			</div>
