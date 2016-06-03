@@ -25,6 +25,8 @@ class ArtifactsController < ApplicationController
   def edit
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
     @artifact = Artifact.find(params[:id])
+    @family_names = ["Cecil", "Lemkin", "Bogg", "Drigger"]
+    @artifact_types = ["Picture","Video", "Audio", "Journal","Recipe","Letter","News Report","PostCard","Card","Certificate"]
   end
 
   #post todo

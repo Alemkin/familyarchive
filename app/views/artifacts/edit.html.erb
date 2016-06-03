@@ -37,9 +37,9 @@
 <br/>
 <%= f.input :subject_author_name, label: 'Subject/Author Name:', error: 'Subject/Author invalid' %>
 <br/>
-<%= f.input :family_name, collection: @family_names, label: 'Family Name:', error: 'Family Name invalid' %>
+<%= f.input :family_name, as: :select, collection: @family_names, selected: @artifact.family_name, label: 'Family Name:', error: 'Family Name invalid' %>
 <br/>
-<%= f.input :artifact_type, collection: @artifact_types, label: 'Artifact Type:', error: 'Artifact type invalid' %>
+<%= f.input :artifact_type, as: :select, collection: @artifact_types,selected: @artifact.artifact_type, label: 'Artifact Type:', error: 'Artifact type invalid' %>
 <br/>
 <%= f.input :exact_date, label: 'Exact Date:', as: :date, start_year: Time.now.year - 200, end_year: Time.now.year, order: [:day, :month, :year], html5: true, error: 'Exact date invalid'  %>
 <br/>
