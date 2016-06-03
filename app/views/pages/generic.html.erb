@@ -56,8 +56,8 @@
 			<h1><%=@artifact.artifact_name%></h1>
 			<h3><%=@artifact.subject_author_name%></h3>
 			<% if current_user.is_admin -%>
-			<a class="button editartifactbutton" href="/editartifact?id=<%=@artifact.id%>">Edit this Artifact</a>
-			<%= button_to 'Delete', deleteartifact_path(:id => @artifact.id), method: :delete,
+			<a class="button editartifactbutton" href="/artifacts/<%=@artifact.id%>/edit">Edit this Artifact</a>
+			<%= button_to 'Delete', "/artifacts/"+@artifact.id.to_s, method: :delete,
 															:onclick => 'return confirm("Confirm Delete Artifact")', :class => "button small deleteartifactbutton" %>
 			<% end -%>
 			<div class="gallery" align="center">

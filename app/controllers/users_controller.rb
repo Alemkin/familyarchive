@@ -17,10 +17,10 @@ class UsersController < ApplicationController
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to '/allusers'
+      redirect_to '/users'
       flash[:notice] = "User edited successfully with id: " + @user.id.to_s
     else
-      render :action => '/edit'
+      render :action => '/users/'+@user.id+'/edit'
     end
   end
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
     @user = User.new(user_params)
     if @user.save
-      redirect_to '/signup'
+      redirect_to '/users/new'
       flash[:notice] = "User created successfully with email: " + @user.email
     else
       flash[:error] = "You filled out your information incorrectly."
@@ -50,9 +50,9 @@ class UsersController < ApplicationController
     if @current_user.id != user.id
       User.find(params[:id]).destroy
       flash[:notice] = "User deleted"
-      redirect_to '/allusers'
+      redirect_to '/users'
     else
-      redirect_to '/allusers'
+      redirect_to '/users'
       flash[:error] = "You can't delete yourself"
     end
   end

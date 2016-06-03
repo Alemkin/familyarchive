@@ -2,18 +2,18 @@
 <html>
 <head>
   <title>Cecil-Lemkin Family Archive</title>
-  <!--[if lte IE 8]><script src="assets/ie/html5shiv.js"></script><![endif]-->
-	<link rel="stylesheet" href="assets/main.css" />
-  <link rel="stylesheet" href="assets/font-awesome.min.css" />
+  <!--[if lte IE 8]><script src="http://localhost:3000/assets/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="http://localhost:3000/assets/main.css" />
+  <link rel="stylesheet" href="http://localhost:3000/assets/font-awesome.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--[if lte IE 9]><link rel="stylesheet" href="assets/ie9.css" /><![endif]-->
-	<!--[if lte IE 8]><link rel="stylesheet" href="assets/ie8.css" /><![endif]-->
+	<!--[if lte IE 9]><link rel="stylesheet" href="http://localhost:3000/assets/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="http://localhost:3000/assets/ie8.css" /><![endif]-->
   <%= csrf_meta_tags %>
   <!-- Scripts -->
-  <script src="assets/jquery.min.js"></script>
-  <script src="assets/skel.min.js"></script>
-  <script src="assets/util.js"></script>
-  <!--[if lte IE 8]><script src="assets/ie/respond.min.js"></script><![endif]-->
+  <script src="http://localhost:3000/assets/jquery.min.js"></script>
+  <script src="http://localhost:3000/assets/skel.min.js"></script>
+  <script src="http://localhost:3000/assets/util.js"></script>
+  <!--[if lte IE 8]><script src="http://localhost:3000/assets/ie/respond.min.js"></script><![endif]-->
 
 </head>
 <body>
@@ -26,8 +26,8 @@
   <header id="header">
     <div class="inner">
       <!-- Logo -->
-        <a href="index" class="logo">
-          <span class="symbol"><i class="fa fa-heart-o"></i></span><span class="title">Cecil-Lemkin Family Archive</span>
+        <a href="/" class="logo">
+          <span class="symbol"><i class="fa fa-heart-o"></i></span><span class="title">Four Corners Family Archive</span>
         </a>
       <!-- Nav -->
         <nav>
@@ -43,13 +43,13 @@
   <nav id="menu">
     <h2>Menu</h2>
     <ul>
-      <li><a class="fa fa-home" href="index">&nbsp; Home</a></li>
+      <li><%= link_to '   Home', '/', class: "fa fa-home" %></li>
       <% if current_user %>
       <li><%= link_to '   Logout', '/logout', class: "fa fa-sign-out" %></li>
         <% if current_user.is_admin %>
-          <li><%= link_to '   Add User', '/signup', class: "fa fa-user-plus" %></li>
-          <li><%= link_to '   Add Artifact', '/newartifact', class: "fa fa-plus" %></li>
-          <li><%= link_to '   View Users', '/allusers', class: "fa fa-users" %></li>
+          <li><%= link_to '   Add User', '/users/new', class: "fa fa-user-plus" %></li>
+          <li><%= link_to '   Add Artifact', '/artifacts/new', class: "fa fa-plus" %></li>
+          <li><%= link_to '   View Users', '/users', class: "fa fa-users" %></li>
         <% end %>
       <% else %>
       <li><%= link_to '   Login', '/login', class: "fa fa-sign-in" %> </li>
@@ -58,6 +58,6 @@
   </nav>
 <%= yield %>
 
-<script src="assets/main.js"></script>
+<script src="http://localhost:3000/assets/main.js"></script>
 </body>
 </html>

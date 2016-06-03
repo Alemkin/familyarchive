@@ -13,7 +13,7 @@ class ArtifactsController < ApplicationController
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
     @artifact = Artifact.new(artifact_params)
     if @artifact.save
-      redirect_to '/newartifact'
+      redirect_to '/artifacts/new'
       flash[:notice] = "Artifact created successfully with name: " + @artifact.artifact_name
     else
       flash[:error] = "Something went wrong filling out your artifact data."
@@ -36,7 +36,7 @@ class ArtifactsController < ApplicationController
       flash[:notice] = "This artifact was edited successfully"
     else
       flash[:error] = "Something went wrong filling out your artifact data."
-      render :action => '/editartifact'
+      render :action => '/artifacts/'+@artifact.id+'/edit'
     end
   end
 
