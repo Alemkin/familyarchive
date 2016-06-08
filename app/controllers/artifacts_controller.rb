@@ -41,7 +41,7 @@ class ArtifactsController < ApplicationController
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
     @artifact = Artifact.find(params[:id])
     if @artifact.update_attributes(artifact_params)
-      redirect_to generic_path(:id => @artifact.id)
+      redirect_to '/artifacts/'+@artifact.id.to_s
       flash[:notice] = "This artifact was edited successfully"
     else
       flash[:error] = "Something went wrong filling out your artifact data."

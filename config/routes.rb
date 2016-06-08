@@ -13,7 +13,6 @@ FamilyArchive::Application.routes.draw do
   post '/users' => 'users#create'
   get '/users' => 'users#all'
 
-  get '/generic' => 'pages#generic'
   get '/index' => 'pages#index'
 
   get '/artifacts/new' => 'artifacts#new'

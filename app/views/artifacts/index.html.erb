@@ -36,8 +36,11 @@
 	.meta-container{
     display:flex;
 		text-align: center;
+    margin: 0 auto;
+    padding: 10px;
 	}
 	.meta-flex-item{
+    padding: 10px;
     width: calc(50.0000% - 1.25em);
     border: .5px solid #c9c9c9;
 	}
@@ -69,17 +72,25 @@
 			<%= button_to 'Delete', "/artifacts/"+@artifact.id.to_s, method: :delete,
 															:onclick => 'return confirm("Confirm Delete Artifact")', :class => "button small deleteartifactbutton" %>
 			<% end -%>
-			<div class="gallery" align="center">
-				<div class="image preview" align="center" style="height: 500px;">
-					<a id="previewhref" href="<%=@artifact.image_url[0]%>" target="_blank"><img id="preview" src="<%=@artifact.image_url[0]%>" alt="Image of <%=@artifact.artifact_name%>" /></a>
-				</div>
-				<hr style="margin-right: 280px; margin-left: 280px;">
-				<div class="thumbnails" >
-					<% for image in @artifact.image_url %>
-					<img onclick="getElementById('preview').src='<%=image%>';getElementById('previewhref').href='<%=image%>';" src="<%=image%>" alt="Missing image" />
-					<% end %>
-				</div>
-			</div>
+
+      <% if @artifact.video_url.to_s.strip.length != 0 -%>
+        <video width="100%" controls>
+         <source src=<%=@artifact.video_url%>>
+         Your browser does not support the video tag.
+        </video>
+      <% else -%>
+  			<div class="gallery" align="center">
+  				<div class="image preview" align="center" style="height: 500px;">
+  					<a id="previewhref" href="<%=@artifact.image_url[0]%>" target="_blank"><img id="preview" src="<%=@artifact.image_url[0]%>" alt="Image of <%=@artifact.artifact_name%>" /></a>
+  				</div>
+  				<hr style="margin-right: 280px; margin-left: 280px;">
+  				<div class="thumbnails" >
+  					<% for image in @artifact.image_url %>
+  					<img onclick="getElementById('preview').src='<%=image%>';getElementById('previewhref').href='<%=image%>';" src="<%=image%>" alt="Missing image" />
+  					<% end %>
+  				</div>
+  			</div>
+      <% end -%>
 			<hr style="margin-right: 280px; margin-left: 280px; margin-bottom: 50px;">
 
 			<h2>Story</h2>
