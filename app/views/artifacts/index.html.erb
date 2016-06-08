@@ -37,12 +37,13 @@
     display:flex;
 		text-align: center;
     margin: 0 auto;
-    padding: 10px;
+    width: 90%;
 	}
 	.meta-flex-item{
     padding: 10px;
     width: calc(50.0000% - 1.25em);
-    border: .5px solid #c9c9c9;
+    border-top: .5px solid #c9c9c9;
+    border-bottom: .5px solid #c9c9c9;
 	}
 	@media screen and (max-width: 480px)  {
 		.preview img {
@@ -83,15 +84,16 @@
   				<div class="image preview" align="center" style="height: 500px;">
   					<a id="previewhref" href="<%=@artifact.image_url[0]%>" target="_blank"><img id="preview" src="<%=@artifact.image_url[0]%>" alt="Image of <%=@artifact.artifact_name%>" /></a>
   				</div>
-  				<hr style="margin-right: 280px; margin-left: 280px;">
+  				<hr style="width:60%;">
   				<div class="thumbnails" >
   					<% for image in @artifact.image_url %>
   					<img onclick="getElementById('preview').src='<%=image%>';getElementById('previewhref').href='<%=image%>';" src="<%=image%>" alt="Missing image" />
   					<% end %>
   				</div>
+          <hr style="width:60%; margin-bottom: 50px;">
   			</div>
       <% end -%>
-			<hr style="margin-right: 280px; margin-left: 280px; margin-bottom: 50px;">
+
 
 			<h2>Story</h2>
 			<% for s_paragraph in @story_paragraphs %>
@@ -104,7 +106,7 @@
 				<% end %>
 			<% end -%>
 		</div>
-		<hr style="margin-right: 280px; margin-left: 280px; margin-top: 50px;">
+    <br/><br/>
 
 		<div class="meta-container">
 	    <div class="meta-flex-item left">
