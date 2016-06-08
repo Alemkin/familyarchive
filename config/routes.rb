@@ -6,7 +6,7 @@ FamilyArchive::Application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  get '/users/new' => 'users#new'  
+  get '/users/new' => 'users#new'
   delete '/users/:id' => 'users#destroy'
   get '/users/:id/edit' => 'users#edit'
   patch '/users/:id' => 'users#update'
@@ -18,6 +18,7 @@ FamilyArchive::Application.routes.draw do
 
   get '/artifacts/new' => 'artifacts#new'
   get '/artifacts/:id/edit' => 'artifacts#edit'
+  get '/artifacts/:id' => 'artifacts#index'
   patch '/artifacts/:id' => 'artifacts#update'
   delete '/artifacts/:id' => 'artifacts#destroy'
   post '/artifacts' => 'artifacts#create'

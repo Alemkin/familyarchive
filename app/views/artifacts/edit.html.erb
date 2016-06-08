@@ -57,7 +57,7 @@
 </div>
 <br/>
 <%= f.button :submit ,  :onclick => 'return confirm("Confirm Save Artifact")' %>
-<%= link_to 'Return to Home', '/' %>
+<%= link_to 'Return to Artifact Page', '/artifacts/'+@artifact.id.to_s %>
 <% end %>
 <!-- edit artifact form -->
 

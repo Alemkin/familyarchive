@@ -1,6 +1,13 @@
 class ArtifactsController < ApplicationController
 
   #get
+  def index
+    @artifact = Artifact.find(params[:id])
+    @story_paragraphs = @artifact.story_text.split("\n")
+    @transcribed_paragraphs = @artifact.transcribed_text.split("\n") unless @artifact.transcribed_text.nil?
+  end
+
+  #get
   def new
     redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
     @artifact = Artifact.new
