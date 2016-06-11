@@ -11,7 +11,7 @@ class Artifact < ActiveRecord::Base
 
   def self.search(search)
     artifacts = []
-    key_words = search.to_s.split(" ")
+    key_words = search.gsub(/\s+/m, ' ').gsub(/^\s+|\s+$/m, '').split(" ")
     count = 0
     search_string = ""
     for key_word in key_words

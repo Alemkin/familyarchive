@@ -47,7 +47,7 @@
       <li>
         <%= form_tag("/", :method => "get", id: "search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Artifacts" %>
-          <%= submit_tag "Search", style: "text-color:white;" %>
+          <%= submit_tag "Search"%>
         <% end %>
       </li>
       <li><%= link_to '   Home', '/', class: "fa fa-home" %></li>
