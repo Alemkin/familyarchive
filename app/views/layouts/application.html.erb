@@ -43,8 +43,14 @@
   <nav id="menu">
     <h2>Menu</h2>
     <ul>
-      <li><%= link_to '   Home', '/', class: "fa fa-home" %></li>
       <% if current_user %>
+      <li>
+        <%= form_tag("/", :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Artifacts" %>
+          <%= submit_tag "Search", style: "text-color:white;" %>
+        <% end %>
+      </li>
+      <li><%= link_to '   Home', '/', class: "fa fa-home" %></li>
       <li><%= link_to '   Logout', '/logout', class: "fa fa-sign-out" %></li>
         <% if current_user.is_admin %>
           <li><%= link_to '   Add User', '/users/new', class: "fa fa-user-plus" %></li>

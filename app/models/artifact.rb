@@ -9,17 +9,34 @@ class Artifact < ActiveRecord::Base
 
   before_validation :strip_whitespace
 
-private
-def strip_whitespace
-  self.artifact_name = self.artifact_name.strip unless self.artifact_name.nil?
-  self.short_description = self.short_description.strip unless self.short_description.nil?
-  self.story_text = self.story_text.strip unless self.story_text.nil?
-  self.subject_author_name = self.subject_author_name.strip unless self.subject_author_name.nil?
-  self.family_name = self.family_name.strip unless self.family_name.nil?
-  self.artifact_type = self.artifact_type.strip unless self.artifact_type.nil?
-  for image in self.image_url
-    image.strip
+  def self.search(search)
+    artifacts = []
+    key_words = search.to_s.split(" ")
+    count = 0
+    search_string = ""
+    for key_word in key_words
+       search_string = search_string + "(artifact_name ILIKE '%#{key_word}%'
+       OR subject_author_name ILIKE '%#{key_word}%'
+       OR family_name ILIKE '%#{key_word}%'
+       OR artifact_type ILIKE '%#{key_word}%')"
+       if key_word != key_words.last
+         search_string = search_string + " AND "
+       end
+    end
+    where(search_string)
   end
-end
+
+private
+  def strip_whitespace
+    self.artifact_name = self.artifact_name.strip unless self.artifact_name.nil?
+    self.short_description = self.short_description.strip unless self.short_description.nil?
+    self.story_text = self.story_text.strip unless self.story_text.nil?
+    self.subject_author_name = self.subject_author_name.strip unless self.subject_author_name.nil?
+    self.family_name = self.family_name.strip unless self.family_name.nil?
+    self.artifact_type = self.artifact_type.strip unless self.artifact_type.nil?
+    for image in self.image_url
+      image.strip
+    end
+  end
 
 end
