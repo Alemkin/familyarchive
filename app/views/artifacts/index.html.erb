@@ -125,7 +125,15 @@
 					<p><%=@artifact.artifact_type%></p>
 				<h6> Meta Tags: </h6>
 				<p>
-					<%=@artifact.content_tag.to_sentence(:last_word_connector => ', ')%>
+					<% for content in @artifact.content_tag %>
+					<a href="/?utf8=✓&search=<%=content%>&commit=">
+						<%=content%>
+					</a>
+						<% if (content != @artifact.content_tag.last)%>
+						,&nbsp;
+						<% end %>
+					<% end %>
+					<!-- <%=@artifact.content_tag.to_sentence(:last_word_connector => ', ')%> -->
 				</p>
 			</div>
 		</div>

@@ -18,7 +18,8 @@ class Artifact < ActiveRecord::Base
        search_string = search_string + "(artifact_name ILIKE '%#{key_word}%'
        OR subject_author_name ILIKE '%#{key_word}%'
        OR family_name ILIKE '%#{key_word}%'
-       OR artifact_type ILIKE '%#{key_word}%')"
+       OR artifact_type ILIKE '%#{key_word}%'
+       OR content_tag::text ILIKE '%#{key_word}%')"
        if key_word != key_words.last
          search_string = search_string + " AND "
        end
