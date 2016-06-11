@@ -44,10 +44,11 @@
     <h2>Menu</h2>
     <ul>
       <% if current_user %>
-      <li>
-        <%= form_tag("/", :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Artifacts" %>
-          <%= submit_tag "Search"%>
+      <li style="">
+        <%= form_tag("/", :method => "get", id: "search-form", style: "display:flex;") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Artifacts",
+          title: "Type in keywords to search the artifacts on. The results will contain artifacts that have a column containing each of the entered words." %>
+          <button type="submit" name="commit" value=""><i class="fa fa-search" style="color: white !important;font-size:1.5em;"></i></button>
         <% end %>
       </li>
       <li><%= link_to '   Home', '/', class: "fa fa-home" %></li>
