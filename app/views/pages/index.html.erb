@@ -34,8 +34,8 @@
 				</section>
 				<% else %>
 				  <p class="notice"><i>There are no artifacts containing all of the following term(s): <br/>
-					<% if params[:search].present? %>	 
-						<%= params[:search].split.to_sentence() %>.</i></p>
+					<% if params[:search].present? %>
+							<%= params[:search].split.to_sentence() %>.</i></p>
 					<% end %>
 				<% end %>
 			</div>
