@@ -22,7 +22,7 @@
 						<span class="image">
 							<img src="<%= artifact.image_url[0] %>" alt="Image of <%= artifact.artifact_name %>" />
 						</span>
-						<a href="/artifacts/<%=artifact.id%>">
+						<a href="/archive/artifacts/<%=artifact.id%>">
 							<h2><%= artifact.artifact_name %></h2>
 							<div class="content">
 								<p><%= artifact.short_description %></p>
@@ -34,7 +34,9 @@
 				</section>
 				<% else %>
 				  <p class="notice"><i>There are no artifacts containing all of the following term(s): <br/>
-						 <%= params[:search].split.to_sentence() %>.</i></p>
+					<% if params[:search].present? %>	 
+						<%= params[:search].split.to_sentence() %>.</i></p>
+					<% end %>
 				<% end %>
 			</div>
 		</div>

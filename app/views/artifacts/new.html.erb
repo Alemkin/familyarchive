@@ -13,7 +13,7 @@
 <!-- End Flash notices -->
 
 <!-- New artifact form -->
-<%= simple_form_for @artifact, url: '/artifacts' do |f| %>
+<%= simple_form_for @artifact, url: artifacts_path do |f| %>
   <%= f.input :artifact_name, label: 'Artifact Name:', error: 'Artifact Name invalid'%>
   <br/>
   <%= f.input :short_description, label: 'Short Description:', error: 'Short description invalid' %>
@@ -52,7 +52,7 @@
   </div>
   <br/>
   <%= f.button :submit ,  :onclick => 'return confirm("Confirm Add New Artifact")' %>
-  <%= link_to 'Return to Home', '/' %>
+  <%= link_to 'Return to Home', root_path %>
 <% end %>
 <!-- End New artifact form -->
 

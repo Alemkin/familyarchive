@@ -12,16 +12,16 @@
 <% end -%>
 <!-- End Flash notices -->
 
-<!-- New user form -->
-<%= simple_form_for @user, url: '/users/'+@user.id.to_s do |f| %>
+<!-- Edit user form -->
+<%= simple_form_for @user,:url => url_for(:action => 'update', :controller => 'users', :id => @user.id), :method => :patch  do |f| %>
   <%= f.input :name, label: 'Name:', error: 'Name is invalid', input_html: { maxlength: 20 }%>
   <%= f.input :email, label: 'Email:', error: 'Email is invalid or already used' %>
   <%= f.input :password, label: 'Password:', error: 'Password invalid', input_html: { maxlength: 20 } %>
   <%= f.input :password_confirmation, label: 'Confirm Password:', error: 'Passwords do not match', input_html: { maxlength: 20 } %>
   <%= f.button :submit %>
-  <%= link_to 'Return to User Table', '/users' %>
+  <%= link_to 'Return to User Table', users_path %>
 <% end %>
-<!-- End New user form -->
+<!-- End Edit user form -->
 
   <% else %>
   <h1>You do not have permission to add users.</h1>

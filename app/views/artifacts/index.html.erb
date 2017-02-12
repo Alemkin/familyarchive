@@ -69,8 +69,8 @@
 			<h1><%=@artifact.artifact_name%></h1>
 			<h3><%=@artifact.subject_author_name%></h3>
 			<% if current_user.is_admin -%>
-			<a class="button editartifactbutton" href="/artifacts/<%=@artifact.id%>/edit">Edit this Artifact</a>
-			<%= button_to 'Delete', "/artifacts/"+@artifact.id.to_s, method: :delete,
+			<%= button_to 'Edit this Artifact', {:controller => "artifacts", :action => "edit", :id => @artifact.id.to_s}, method: :get, :class => "button" %>
+			<%= button_to 'Delete', {:controller => "artifacts", :action => "destroy", :id => @artifact.id.to_s}, method: :delete,
 															:onclick => 'return confirm("Confirm Delete Artifact")', :class => "button small deleteartifactbutton" %>
 			<% end -%>
 
@@ -126,9 +126,7 @@
 				<h6> Meta Tags: </h6>
 				<p>
 					<% for content in @artifact.content_tag %>
-					<a href="/?utf8=✓&search=<%=content%>&commit=">
-						<%=content%>
-					</a>
+						<%= link_to content, {:controller => "pages", :action => "index", :method => :get, :search => content, :utf8 => '✓', :commit => ''} %>
 						<% if (content != @artifact.content_tag.last)%>
 						,&nbsp;
 						<% end %>

@@ -9,7 +9,7 @@ class ArtifactsController < ApplicationController
 
   #get
   def new
-    redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
+    redirect_to forbidden_path if current_user == nil || !current_user.is_admin
     @artifact = Artifact.new
     @family_names = ["Cecil", "Lemkin", "Bogg", "Drigger"]
     @artifact_types = ["Picture","Video", "Audio", "Journal","Recipe","Letter","News Report","PostCard","Card","Certificate"]
@@ -17,10 +17,10 @@ class ArtifactsController < ApplicationController
 
   #post
   def create
-    redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
+    redirect_to forbidden_path if current_user == nil || !current_user.is_admin
     @artifact = Artifact.new(artifact_params)
     if @artifact.save
-      redirect_to '/artifacts/new'
+      redirect_to artifacts_new_path
       flash[:notice] = "Artifact created successfully with name: " + @artifact.artifact_name
     else
       flash[:error] = "Something went wrong filling out your artifact data."
@@ -30,7 +30,7 @@ class ArtifactsController < ApplicationController
 
   #get todo
   def edit
-    redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
+    redirect_to forbidden_path if current_user == nil || !current_user.is_admin
     @artifact = Artifact.find(params[:id])
     @family_names = ["Cecil", "Lemkin", "Bogg", "Drigger"]
     @artifact_types = ["Picture","Video", "Audio", "Journal","Recipe","Letter","News Report","PostCard","Card","Certificate"]
@@ -38,23 +38,24 @@ class ArtifactsController < ApplicationController
 
   #post todo
   def update
-    redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
+    redirect_to forbidden_path if current_user == nil || !current_user.is_admin
     @artifact = Artifact.find(params[:id])
     if @artifact.update_attributes(artifact_params)
-      redirect_to '/artifacts/'+@artifact.id.to_s
+      redirect_to  controller: 'artifacts', id: @artifact.id
       flash[:notice] = "This artifact was edited successfully"
     else
       flash[:error] = "Something went wrong filling out your artifact data."
-      render :action => '/artifacts/'+@artifact.id+'/edit'
+      params[:id] =  @artifact.id
+      render :action => "edit"
     end
   end
 
   #post
   def destroy
-    redirect_to '/forbidden' if current_user == nil || !current_user.is_admin
+    redirect_to forbidden_path if current_user == nil || !current_user.is_admin
     Artifact.find(params[:id]).destroy
     flash[:notice] = "Artifact deleted"
-    redirect_to '/'
+    redirect_to root_path
   end
 
 private

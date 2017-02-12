@@ -25,12 +25,12 @@
   	<tbody>
       <% for u in @users %>
   		<tr>
-  			<td><a href="/users/<%=u.id%>/edit"><%= u.id %></a></td>
+  			<td><%= link_to u.id.to_s, {:controller => "users", :action => "edit", :id => u.id }%></td>
   			<td><%= u.name %></td>
   			<td><%= u.email %></td>
         <% if @current_user.id != u.id %>
         <td>
-          <%= button_to 'Delete', "/users/"+u.id.to_s, method: :delete,
+          <%= button_to 'Delete', {:controller => "users", :action => "destroy", :id => u.id.to_s}, method: :delete,
                                   :onclick => 'return confirm("Confirm Delete User")' %>
         </td>
         <% else %>

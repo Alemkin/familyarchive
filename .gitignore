@@ -12,3 +12,6 @@
 /tmp
 
 .gitignore~
+
+.rbenv*
+/shared
