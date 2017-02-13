@@ -99,7 +99,7 @@
 			<% for s_paragraph in @story_paragraphs %>
 				<p style="font-size:18px;"><%=s_paragraph%></p>
 			<% end %>
-			<% if @artifact.transcribed_text -%>
+			<% if @artifact.transcribed_text && @artifact.transcribed_text.to_s.strip.length > 0 -%>
 			<h2>Transcribed Text of Document</h3>
 				<% for t_paragraph in @transcribed_paragraphs %>
 					<p style="font-size:18px;"><%=t_paragraph%></p>
