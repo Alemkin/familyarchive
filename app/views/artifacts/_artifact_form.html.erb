@@ -13,13 +13,13 @@
 			<% for image in @artifact.image_url%>
       <div>
         <input value="<%=image%>" class="string url required" type="url" name="artifact[image_url][]" id="artifact_image_url"
-        required="required" aria-required="true" ><a href="#" class="remove_field">Remove</a>
+        required="required" aria-required="true" > <a href="#" class="remove_field"><i class="fa fa-trash"></i></a>
       </div>
       <% end %>
     <% else -%>
       <div>
         <input value="<%=image%>" class="string url required" type="url" name="artifact[image_url][]" id="artifact_image_url"
-        required="required" aria-required="true" ><a href="#" class="remove_field">Remove</a>
+        required="required" aria-required="true" > <a href="#" class="remove_field"><i class="fa fa-trash"></i></a>
       </div>
     <% end -%>    
   </div>
@@ -42,14 +42,14 @@
     <% if @artifact.content_tag && @artifact.content_tag.length > 0 -%>
 			<% for tag in @artifact.content_tag%>
       <div>
-        <input value="<%=tag%>" style="width:20%;" class="string optional" type="text" name="artifact[content_tag][]" id="artifact_content_tag">
-        <a href="#" class="remove_field">Remove</a>
+        <input value="<%=tag%>" style="width:20%;display:inline-block;" class="string optional" type="text" name="artifact[content_tag][]" id="artifact_content_tag"> 
+        <a href="#" class="remove_field"><i class="fa fa-trash"></i></a>
       </div>
       <% end %>
     <% else -%>
       <div>
-        <input value="<%=tag%>" style="width:20%;" class="string optional" type="text" name="artifact[content_tag][]" id="artifact_content_tag">
-        <a href="#" class="remove_field">Remove</a>
+        <input value="<%=tag%>" style="width:20%;display:inline-block;" class="string optional" type="text" name="artifact[content_tag][]" id="artifact_content_tag"> 
+        <a href="#" class="remove_field"><i class="fa fa-trash"></i></a>
       </div>
     <% end -%>    
   </div>
