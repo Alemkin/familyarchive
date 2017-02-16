@@ -1,0 +1,56 @@
+<%= f.input :artifact_name, label: 'Artifact Name:', error: 'Artifact Name invalid'%>
+  <br/>
+  <%= f.input :short_description, label: 'Short Description:', error: 'Short description invalid' %>
+  <br/>
+  <%= f.input :story_text, as: :text, label: 'Story:', error: 'Story invalid' %>
+  <br/>
+  <%= f.input :transcribed_text, as: :text, label: 'Transcribed text of document:', error: 'Transcribed Text invalid'%>
+  <br/>
+  <label class="url required" for="artifact_image_url"><abbr title="required">*</abbr> Url to direct Image:</label>
+  <div class="input_fields_wrap1">
+    <a href="javascript:void(0);" id="add_field_button1"><i class="fa fa-plus"></i>Add Another Image</a>
+    <% if @artifact.image_url && @artifact.image_url.length > 0 -%>
+			<% for image in @artifact.image_url%>
+      <div>
+        <input value="<%=image%>" class="string url required" type="url" name="artifact[image_url][]" id="artifact_image_url"
+        required="required" aria-required="true" ><a href="#" class="remove_field">Remove</a>
+      </div>
+      <% end %>
+    <% else -%>
+      <div>
+        <input value="<%=image%>" class="string url required" type="url" name="artifact[image_url][]" id="artifact_image_url"
+        required="required" aria-required="true" ><a href="#" class="remove_field">Remove</a>
+      </div>
+    <% end -%>    
+  </div>
+  <br/>
+  <%= f.input :video_url, label: 'Url to direct Video:', error: 'Video url invalid' %>
+  <br/>
+  <%= f.input :subject_author_name, label: 'Subject/Author Name:', error: 'Subject/Author invalid' %>
+  <br/>
+  <%= f.input :family_name, as: :select, collection: @family_names, selected: @artifact.family_name, label: 'Family Name:', error: 'Family Name invalid' %>
+  <br/>
+  <%= f.input :artifact_type, as: :select, collection: @artifact_types,selected: @artifact.artifact_type, label: 'Artifact Type:', error: 'Artifact type invalid' %>
+  <br/>
+  <%= f.input :exact_date, label: 'Exact Date:', as: :date, start_year: Time.now.year - 200, end_year: Time.now.year, order: [:day, :month, :year], html5: true, error: 'Exact date invalid'  %>
+  <br/>
+  <%= f.input :estimated_date, label: 'Estimated Date:' , error: 'Estimated date invalid'%>
+  <br/>
+  <label class="string optional" for="artifact_content_tag">Extra Content Tags:</label>
+  <div class="input_fields_wrap2">
+    <a href="javascript:void(0);" id="add_field_button2"><i class="fa fa-plus"></i>Add Another Tag</a>
+    <% if @artifact.content_tag && @artifact.content_tag.length > 0 -%>
+			<% for tag in @artifact.content_tag%>
+      <div>
+        <input value="<%=tag%>" style="width:20%;" class="string optional" type="text" name="artifact[content_tag][]" id="artifact_content_tag">
+        <a href="#" class="remove_field">Remove</a>
+      </div>
+      <% end %>
+    <% else -%>
+      <div>
+        <input value="<%=tag%>" style="width:20%;" class="string optional" type="text" name="artifact[content_tag][]" id="artifact_content_tag">
+        <a href="#" class="remove_field">Remove</a>
+      </div>
+    <% end -%>    
+  </div>
+  <br/>
