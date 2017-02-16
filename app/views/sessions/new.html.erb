@@ -1,11 +1,7 @@
 <h1 style="text-align:center;">Login</h1>
 <div class="login-form-wrapper" style="width:65%;margin:0 auto;">
-<% if flash[:notice] -%>
-  <p class="notice"><%= flash[:notice] %></p>
-<% end -%>
-<% if flash[:error] -%>
-  <p class="error"><%= flash[:error] %></p>
-<% end -%>
+
+<%= render "shared/flash_notice", flash: flash %>
 
 <%= simple_form_for :sessions, url: '/archive/login' do |f| %>
   <%= f.input :email, label: 'Email:', error: 'Email required' %>

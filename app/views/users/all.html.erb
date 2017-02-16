@@ -3,14 +3,7 @@
 
 <h1>All Users currently in the system</h1>
 
-<!-- Flash notices -->
-<% if flash[:notice] -%>
-  <p class="notice"><%= flash[:notice] %></p>
-<% end -%>
-<% if flash[:error] -%>
-  <p class="error"><%= flash[:error] %></p>
-<% end -%>
-<!-- End Flash notices -->
+<%= render "shared/flash_notice", flash: flash %>
 
 <div class="table-wrapper">
   <table>
