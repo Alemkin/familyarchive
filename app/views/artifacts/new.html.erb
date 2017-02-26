@@ -1,16 +1,18 @@
 <% if current_user %>
   <% if current_user.is_admin %>
 
-<h1>Add a new Artifact to the Archive</h1>
+<h1 style="text-align:center;">Add a new Artifact to the Archive</h1>
 
 <%= render "shared/flash_notice", flash: flash %>
 
 <!-- New artifact form -->
-<%= simple_form_for @artifact, url: artifacts_path do |f| %>
-  <%= render "artifact_form", f: f %>
-  <%= f.button :submit ,  :onclick => 'return confirm("Confirm Add New Artifact")' %>
-  <%= link_to 'Return to Home', root_path %>
-<% end %>
+<div class="simple-form">
+  <%= simple_form_for @artifact, url: artifacts_path do |f| %>
+    <%= render "artifact_form", f: f %>
+    <%= f.button :submit ,  :onclick => 'return confirm("Confirm Add New Artifact")' %>
+    <%= link_to 'Return to Home', root_path %>
+  <% end %>
+</div>
 <!-- End New artifact form -->
 
 <script src="https://alemkin.com/archive/assets/tagAndImageBoxAppender.js"></script>

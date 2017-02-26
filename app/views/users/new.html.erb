@@ -1,19 +1,21 @@
 <% if current_user %>
   <% if current_user.is_admin %>
 
-<h1>Add a User able to view the Archive</h1>
+<h1 style="text-align:center;">Add a User able to view the Archive</h1>
 
 <%= render "shared/flash_notice", flash: flash %>
 
 <!-- New user form -->
-<%= simple_form_for @user, url: users_path do |f| %>
-  <%= f.input :name, label: 'Name:', error: 'Name is invalid', input_html: { maxlength: 20 }%>
-  <%= f.input :email, label: 'Email:', error: 'Email is invalid or already used' %>
-  <%= f.input :password, label: 'Password:', error: 'Password invalid', input_html: { maxlength: 20 } %>
-  <%= f.input :password_confirmation, required: true, label: 'Confirm Password:', error: 'Passwords do not match', input_html: { maxlength: 20 } %>
-  <%= f.button :submit %>
-  <%= link_to 'Return to Home', root_path %>
-<% end %>
+<div class="simple-form">
+  <%= simple_form_for @user, url: users_path do |f| %>
+    <%= f.input :name, label: 'Name:', error: 'Name is invalid', input_html: { maxlength: 20 }%>
+    <%= f.input :email, label: 'Email:', error: 'Email is invalid or already used' %>
+    <%= f.input :password, label: 'Password:', error: 'Password invalid', input_html: { maxlength: 20 } %>
+    <%= f.input :password_confirmation, required: true, label: 'Confirm Password:', error: 'Passwords do not match', input_html: { maxlength: 20 } %>
+    <%= f.button :submit %>
+    <%= link_to 'Return to Home', root_path %>
+  <% end %>
+</div>
 <!-- End New user form -->
 
   <% else %>

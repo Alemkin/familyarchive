@@ -46,6 +46,21 @@
 
 	body {
 		-webkit-text-size-adjust: none;
+	}	
+	
+	.simple-form {
+		margin: 3em;
+	}
+	
+	.simple-form label {
+		margin: 0;
+	}
+	
+	.simple-form input[type="text"], 
+	.simple-form input[type="password"], 
+	.simple-form input[type="email"], 
+	.simple-form select {
+		height: 1.5em;
 	}
 
 	.error {
@@ -2152,10 +2167,6 @@
 	input[type="tel"],
 	select,
 	textarea {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
 		background-color: transparent;
 		border: none;
 		border-radius: 0;

@@ -1,16 +1,18 @@
 <% if current_user %>
   <% if current_user.is_admin %>
 
-<h1>Add a User able to view the Archive</h1>
+<h1 style="text-align:center;">Add a User able to view the Archive</h1>
 
 <%= render "shared/flash_notice", flash: flash %>
 
 <!-- edit artifact form -->
-<%= simple_form_for @artifact, :url => url_for(:action => 'update', :controller => 'artifacts', :id => @artifact.id), :method => :patch do |f| %>
-  <%= render "artifact_form", f: f %>
-  <%= f.button :submit ,  :onclick => 'return confirm("Confirm Save Artifact")' %>
-  <%= link_to 'Return to Artifact Page', {:controller => "artifacts", :action => "index", :method => :get, :id => @artifact.id.to_s } %>
-<% end %>
+<div class="simple-form">
+  <%= simple_form_for @artifact, :url => url_for(:action => 'update', :controller => 'artifacts', :id => @artifact.id), :method => :patch do |f| %>
+    <%= render "artifact_form", f: f %>
+    <%= f.button :submit ,  :onclick => 'return confirm("Confirm Save Artifact")' %>
+    <%= link_to 'Return to Artifact Page', {:controller => "artifacts", :action => "index", :method => :get, :id => @artifact.id.to_s } %>
+  <% end %>
+</div>
 <!-- edit artifact form -->
 
 <script src="https://alemkin.com/archive/assets/tagAndImageBoxAppender.js"></script>
